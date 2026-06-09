@@ -17,10 +17,17 @@ def calculate_rsi(close_prices, period=14):
 
 def get_rsi_signal(rsi_value):
 
-    if rsi_value > 60:
+    if rsi_value >= 70:
+        return "overbought"
+
+    elif rsi_value >= 60:
         return "bullish"
 
-    elif rsi_value < 40:
+    elif rsi_value >= 40:
+        return "neutral"
+
+    elif rsi_value >= 30:
         return "bearish"
 
-    return "neutral"
+    else:
+        return "oversold"

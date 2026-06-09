@@ -1,35 +1,40 @@
-print("TradeSense AI Started")
-print("=" * 40)
-print("         TradeSense AI")
-print("=" * 40)
+from indicators.ema import get_trend
+from indicators.rsi import get_rsi_signal
 
-bull_score = 0
-bear_score = 0
+from strategy.scoring import calculate_score
+
 
 ema50 = 65000
 ema200 = 62000
 
 rsi = 65
 
-volume_high = True
 
-if ema50 > ema200:
-    bull_score += 30
-else:
-    bear_score += 30
+trend = get_trend(ema50, ema200)
 
-if rsi > 60:
-    bull_score += 20
+rsi_signal = get_rsi_signal(rsi)
 
-if volume_high:
-    bull_score += 20
+bull_score, bear_score = calculate_score(
+    trend,
+    rsi_signal
+)
 
-print(f"Bull Score: {bull_score}")
-print(f"Bear Score: {bear_score}")
+print("=" * 40)
+print("TradeSense AI")
+print("=" * 40)
+
+print("Trend:", trend)
+print("RSI Signal:", rsi_signal)
+
+print()
+print("Bull Score:", bull_score)
+print("Bear Score:", bear_score)
 
 if bull_score > bear_score:
     print("Action: BUY")
+
 elif bear_score > bull_score:
     print("Action: SELL")
+
 else:
     print("Action: WAIT")

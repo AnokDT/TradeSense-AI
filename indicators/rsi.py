@@ -1,7 +1,26 @@
-def get_rsi_signal(rsi):
-    if rsi > 60:
+def calculate_rsi(close_prices, period=14):
+
+    delta = close_prices.diff()
+
+    gain = delta.where(delta > 0, 0)
+    loss = -delta.where(delta < 0, 0)
+
+    avg_gain = gain.rolling(window=period).mean()
+    avg_loss = loss.rolling(window=period).mean()
+
+    rs = avg_gain / avg_loss
+
+    rsi = 100 - (100 / (1 + rs))
+
+    return rsi
+
+
+def get_rsi_signal(rsi_value):
+
+    if rsi_value > 60:
         return "bullish"
-    elif rsi < 40:
+
+    elif rsi_value < 40:
         return "bearish"
-    else:
-        return "neutral"
+
+    return "neutral"

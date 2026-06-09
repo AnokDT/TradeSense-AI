@@ -1,3 +1,4 @@
+print("TradeSense AI Started")
 print("=" * 40)
 print("         TradeSense AI")
 print("=" * 40)

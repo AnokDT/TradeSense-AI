@@ -1,8 +1,7 @@
 from data.fetch_data import get_btc_data
 
 from indicators.ema import (
-    calculate_ema,
-    get_trend
+    calculate_ema
 )
 
 
@@ -12,7 +11,15 @@ def run_backtest():
 
     close_prices = btc[("Close", "BTC-USD")]
 
-    signals_generated = 0
+    position = None
+    buy_price = 0
+
+    trades = 0
+
+    print("=" * 50)
+    print("TradeSense Backtest")
+    print("=" * 50)
+    print()
 
     for i in range(50, len(close_prices)):
 
@@ -23,24 +30,58 @@ def run_backtest():
             50
         )
 
-        latest_price = historical_data.iloc[-1]
+        current_price = historical_data.iloc[-1]
 
-        latest_ema50 = ema50.iloc[-1]
+        current_date = historical_data.index[-1].date()
 
-        if latest_price > latest_ema50:
-            signal = "BUY"
-        else:
-            signal = "SELL"
+        current_ema50 = ema50.iloc[-1]
 
-        print(
-            historical_data.index[-1].date(),
-            signal
-        )
+        signal = "BUY" if current_price > current_ema50 else "SELL"
 
-        signals_generated += 1
+        # ENTER TRADE
+
+        if signal == "BUY" and position is None:
+
+            position = "LONG"
+            buy_price = current_price
+
+            print(
+                f"{current_date} | BUY @ ${buy_price:.2f}"
+            )
+
+        # EXIT TRADE
+
+        elif signal == "SELL" and position == "LONG":
+
+            sell_price = current_price
+
+            profit_pct = (
+                (sell_price - buy_price)
+                / buy_price
+            ) * 100
+
+            trades += 1
+
+            print(
+                f"{current_date} | SELL @ ${sell_price:.2f}"
+            )
+
+            print(
+                f"Trade #{trades} Profit: "
+                f"{profit_pct:.2f}%"
+            )
+
+            print()
+
+            position = None
+
+    print("=" * 50)
+    print("Backtest Complete")
+    print("=" * 50)
 
     print()
-    print("Signals Generated:", signals_generated)
+
+    print("Trades Closed:", trades)
 
 
 if __name__ == "__main__":

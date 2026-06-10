@@ -1,9 +1,13 @@
-def calculate_score(trend, rsi_signal):
+def calculate_score(
+    trend,
+    rsi_signal,
+    volume_signal
+):
 
     bull_score = 0
     bear_score = 0
 
-    # EMA Trend
+    # Trend
 
     if trend == "bullish":
         bull_score += 60
@@ -24,5 +28,11 @@ def calculate_score(trend, rsi_signal):
 
     elif rsi_signal == "oversold":
         bull_score += 40
+
+    # Volume
+
+    if volume_signal == "high":
+        bull_score += 15
+        bear_score += 15
 
     return bull_score, bear_score

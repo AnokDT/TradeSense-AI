@@ -17,7 +17,12 @@ from indicators.rsi import (
     get_rsi_signal
 )
 
-from strategy.scoring import calculate_score
+
+from indicators.volume import get_volume_signal
+
+from strategy.reasons import get_reasons
+
+
 
 
 # =========================
@@ -27,6 +32,8 @@ from strategy.scoring import calculate_score
 btc = get_btc_data()
 
 close_prices = btc[("Close", "BTC-USD")]
+
+volume_data = btc[("Volume", "BTC-USD")]
 
 
 # =========================
@@ -57,6 +64,12 @@ rsi_signal = get_rsi_signal(
     latest_rsi
 )
 
+#### VOLUME #####
+
+volume_signal = get_volume_signal(
+    volume_data
+)
+
 
 # =========================
 # 4. CALCULATE SCORES
@@ -64,7 +77,8 @@ rsi_signal = get_rsi_signal(
 
 bull_score, bear_score = calculate_score(
     trend,
-    rsi_signal
+    rsi_signal,
+    volume_signal
 )
 
 
@@ -137,6 +151,8 @@ print("Trend:", trend)
 
 print()
 
+print("Volume Signal:", volume_signal)
+
 print("RSI:", round(latest_rsi, 2))
 print("RSI Signal:", rsi_signal)
 
@@ -163,4 +179,11 @@ else:
     print("Signal Strength: WEAK")
 
 print()
+print("Reasons:")
+
+for reason in reasons:
+    print("-", reason)
+
+print()
 print("=" * 40)
+

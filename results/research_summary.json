@@ -1,0 +1,43 @@
+{
+  "total_experiments": 9,
+  "best_return": {
+    "strategy": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "value": 310.41441249856507
+  },
+  "best_sharpe": {
+    "strategy": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "value": 0.909303043467552
+  },
+  "lowest_drawdown": {
+    "strategy": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "value": 44.3493784165097
+  },
+  "most_robust": {
+    "strategy": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "value": 96.09754111123583
+  },
+  "best_composite": {
+    "strategy": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "value": 74.19418390790342
+  }
+}

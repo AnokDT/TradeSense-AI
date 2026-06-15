@@ -23,6 +23,10 @@ from backtesting.comparison import compare_strategies
 from backtesting.robustness import analyze_robustness
 from backtesting.walk_forward import run_walk_forward_validation
 
+# Phase 4 Imports
+from research.benchmark import run_benchmark_suite, export_research_report
+from research.query import get_all_experiments, get_top_n_strategies, get_best_strategy_by_metric
+
 def run_daily_analysis():
     print("\n" + "=" * 40)
     print("Running Daily Market Analysis...")
@@ -255,32 +259,92 @@ def handle_robustness_menu():
         if choice == "1":
             analyze_robustness(EMAPriceCrossoverStrategy, {"ema_period": 50}, "ema_period", step=1, count=5, legacy_mode=False)
             break
-        elif choice == "2":
-            analyze_robustness(EMAPriceCrossoverStrategy, {"ema_period": 100}, "ema_period", step=1, count=5, legacy_mode=False)
-            break
-        elif choice == "3":
-            analyze_robustness(EMACrossoverStrategy, {"fast_period": 50, "slow_period": 200}, "fast_period", step=2, count=5, legacy_mode=False)
-            break
-        elif choice == "4":
-            break
-        else:
-            print("Invalid selection. Please choose 1-4.")
+def handle_view_database_summary():
+    experiments = get_all_experiments()
+    if not experiments:
+        print("\nNo experiments found in database. Run option 8 first.")
+        return
+        
+    print("\n" + "=" * 70)
+    print("Research Database Summary")
+    print("=" * 70)
+    print(f"Total Saved Experiments: {len(experiments)}")
+    print()
+    
+    for metric in ['return', 'sharpe', 'drawdown', 'robustness', 'composite_score']:
+        try:
+            best = get_best_strategy_by_metric(metric)
+            if not best:
+                continue
+                
+            label = {
+                'return': "Best Return",
+                'sharpe': "Best Sharpe",
+                'drawdown': "Lowest Drawdown",
+                'robustness': "Most Robust",
+                'composite_score': "Best Composite"
+            }[metric]
+            
+            val_suffix = "%" if metric in ['return', 'drawdown', 'robustness'] else ""
+            val = best.get(metric, 0.0)
+            if metric == 'drawdown':
+                val = best.get("drawdown", 0.0)
+                
+            print(f"{label:<17}: {best.get('strategy_name')} | Params: {best.get('parameters')} | Value: {val:.2f}{val_suffix}")
+        except Exception as e:
+            print(f"Error loading metric {metric}: {e}")
+    print("=" * 70)
+
+def handle_show_top_strategies():
+    n_str = input("\nEnter number of top strategies to show (default: 5): ").strip()
+    n = int(n_str) if n_str.isdigit() else 5
+    
+    top = get_top_n_strategies(n)
+    if not top:
+        print("No strategies found in database. Run option 8 first.")
+        return
+        
+    print("\n" + "=" * 110)
+    print(f"Top {len(top)} Ranked Strategies (Sorted by Composite Score)")
+    print("=" * 110)
+    
+    df = pd.DataFrame(top)
+    display_cols = ["strategy_name", "parameters", "return", "drawdown", "sharpe", "robustness", "walk_forward_score", "composite_score"]
+    df_print = df[[c for c in display_cols if c in df.columns]].copy()
+    df_print.columns = ["Strategy", "Params", "Return (%)", "Max DD (%)", "Sharpe", "Robustness", "Walk-Forward", "Composite Score"]
+    
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', 1000)
+    print(df_print.to_string(index=True))
+    print("=" * 110)
+
+def handle_reset_database():
+    confirm = input("\nAre you sure you want to reset the research database? [y/N]: ").strip().lower()
+    if confirm == 'y':
+        from research.database import save_database
+        save_database([])
+        print("Research database cleared successfully.")
 
 def main_menu():
     while True:
-        print("\n" + "=" * 50)
+        print("\n" + "=" * 55)
         print("TradeSense AI - Professional Quantitative Research")
-        print("=" * 50)
+        print("=" * 55)
         print("1. Run Daily Market Analysis")
         print("2. Run Strategy Backtests (Risk & Perf Report)")
         print("3. Optimize Strategy Parameters")
         print("4. Compare Strategies (Composite Score)")
         print("5. Run Walk-Forward Validation")
         print("6. Run Parameter Robustness Analysis")
-        print("7. Exit")
-        print("=" * 50)
+        print("7. Reset Research Database")
+        print("8. Run Full Strategy Benchmark Suite")
+        print("9. View Research Database Summary")
+        print("10. Show Top Ranked Strategies")
+        print("11. Export Research Report")
+        print("12. Exit")
+        print("=" * 55)
         
-        choice = input("Select an option [1-7]: ").strip()
+        choice = input("Select an option [1-12]: ").strip()
         if choice == "1":
             run_daily_analysis()
         elif choice == "2":
@@ -294,10 +358,20 @@ def main_menu():
         elif choice == "6":
             handle_robustness_menu()
         elif choice == "7":
+            handle_reset_database()
+        elif choice == "8":
+            run_benchmark_suite(legacy_mode=False)
+        elif choice == "9":
+            handle_view_database_summary()
+        elif choice == "10":
+            handle_show_top_strategies()
+        elif choice == "11":
+            export_research_report()
+        elif choice == "12":
             print("\nThank you for using TradeSense AI. Goodbye!\n")
             sys.exit(0)
         else:
-            print("Invalid selection. Please choose 1-7.")
+            print("Invalid selection. Please choose 1-12.")
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -313,8 +387,9 @@ if __name__ == "__main__":
             run_walk_forward_validation(EMAPriceCrossoverStrategy, grid, legacy_mode=False)
         elif arg == "robustness":
             analyze_robustness(EMAPriceCrossoverStrategy, {"ema_period": 50}, "ema_period", step=1, count=5, legacy_mode=False)
+        elif arg == "benchmark":
+            run_benchmark_suite(legacy_mode=False)
         else:
             print(f"Unknown argument: {arg}")
     else:
-        main_menu()
         main_menu()

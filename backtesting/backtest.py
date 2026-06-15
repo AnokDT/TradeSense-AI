@@ -303,6 +303,7 @@ def run_backtest(strategy: BaseStrategy = None, starting_capital: float = 10000.
         "sharpe": sharpe,
         "sortino": sortino,
         "calmar": calmar,
+        "parameters": strategy.get_parameters(),
         "trade_log": trade_log,
         "equity_curve": df_equity
     }

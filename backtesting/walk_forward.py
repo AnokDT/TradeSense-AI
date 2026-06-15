@@ -5,7 +5,7 @@ from data.fetch_data import get_btc_data
 from backtesting.backtest import run_backtest
 from backtesting.optimizer import optimize_parameters
 
-def run_walk_forward_validation(strategy_class, param_grid, train_span_years: int = 2, test_span_years: int = 1, starting_capital: float = 10000.0, legacy_mode: bool = False, verbose: bool = True):
+def run_walk_forward_validation(strategy_class, param_grid, train_span_years: int = 2, test_span_years: int = 1, starting_capital: float = 10000.0, legacy_mode: bool = False, verbose: bool = True, data: pd.DataFrame = None):
     """
     Performs Walk-Forward Validation to evaluate a strategy and prevent overfitting.
     
@@ -14,8 +14,12 @@ def run_walk_forward_validation(strategy_class, param_grid, train_span_years: in
     2. Optimizes parameters on the training window.
     3. Runs backtest with optimized parameters on the out-of-sample testing window.
     4. Computes out-of-sample metrics.
+    - data: Optional historical data DataFrame to prevent repeated downloads
     """
-    btc = get_btc_data()
+    if data is None:
+        btc = get_btc_data()
+    else:
+        btc = data.copy()
     
     if isinstance(btc.columns, pd.MultiIndex):
         btc.columns = [col[0] for col in btc.columns]

@@ -1,0 +1,4 @@
+window,train_start,train_end,test_start,test_end,best_params,oos_trades,oos_win_rate_pct,oos_return_pct,oos_drawdown_pct,oos_sharpe,oos_buy_hold_pct
+1,2021-06-15,2023-06-15,2023-06-16,2024-06-15,{'ema_period': 100},4,25.0,103.67,22.95,1.79,151.41
+2,2022-06-15,2024-06-14,2024-06-15,2025-06-15,{'ema_period': 50},10,30.0,45.76,19.64,1.27,59.47
+3,2023-06-15,2025-06-14,2025-06-15,2026-06-15,{'ema_period': 50},12,16.67,-12.79,25.58,-0.57,-37.74

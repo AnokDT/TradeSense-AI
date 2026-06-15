@@ -1,0 +1,4 @@
+ema_period,trades,win_rate_pct,sum_return_pct,portfolio_return_pct,final_capital
+50,22,31.82,133.59,233.9,33390.4
+100,14,28.57,132.05,193.86,29386.28
+20,41,36.59,122.33,155.1,25509.54

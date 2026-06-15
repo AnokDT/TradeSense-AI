@@ -1,23 +1,25 @@
 import pandas as pd
 from backtesting.backtest import run_backtest
+from backtesting.robustness import analyze_robustness
+from backtesting.ranking import calculate_composite_score
 
 def compare_strategies(strategies, starting_capital: float = 10000.0, legacy_mode: bool = False):
     """
-    Compares multiple strategies side-by-side on the same historical data.
-    
-    Parameters:
-    - strategies: A list of strategy instances (e.g., [EMAPriceCrossoverStrategy(50), EMACrossoverStrategy(50, 200)])
-    - starting_capital: Initial capital for backtesting (default: 10000.0)
-    - legacy_mode: Whether to run backtests in legacy mode.
+    Compares multiple strategies side-by-side on the same historical data,
+    ranking them using a composite risk-adjusted score.
     """
     comparison_data = []
     
     print("=" * 80)
-    print("TradeSense AI Strategy Comparison Report")
+    print("TradeSense AI Strategy Comparison Report (Risk-Adjusted Composite Ranking)")
     print("=" * 80)
     print(f"Starting Capital: ${starting_capital:,.2f}")
     print(f"Strategies evaluated: {len(strategies)}")
     print()
+    
+    # Fetch historical data once
+    from data.fetch_data import get_btc_data
+    btc = get_btc_data()
     
     for strategy in strategies:
         # Run backtest silently
@@ -25,10 +27,37 @@ def compare_strategies(strategies, starting_capital: float = 10000.0, legacy_mod
             strategy=strategy,
             starting_capital=starting_capital,
             legacy_mode=legacy_mode,
-            verbose=False
+            verbose=False,
+            export=False,
+            data=btc
         )
         
-        # Calculate comparison metrics
+        # Calculate robustness score via sensitivity analysis
+        try:
+            params = strategy.get_parameters()
+            if "Price Crossover" in strategy.name:
+                rob, _ = analyze_robustness(
+                    type(strategy), params, "ema_period",
+                    starting_capital=starting_capital, legacy_mode=legacy_mode, verbose=False, data=btc
+                )
+            elif "EMA Crossover" in strategy.name:
+                rob, _ = analyze_robustness(
+                    type(strategy), params, "fast_period",
+                    starting_capital=starting_capital, legacy_mode=legacy_mode, verbose=False, data=btc
+                )
+            else:
+                rob = 50.0
+        except Exception:
+            rob = 50.0
+            
+        # Compute composite score
+        score = calculate_composite_score(
+            portfolio_return=res["portfolio_return"],
+            max_drawdown=res["max_drawdown"],
+            sharpe=res["sharpe"],
+            robustness=rob
+        )
+        
         win_rate = res["win_rate"]
         portfolio_return = res["portfolio_return"]
         buy_hold_return = res["buy_hold_return"]
@@ -36,21 +65,20 @@ def compare_strategies(strategies, starting_capital: float = 10000.0, legacy_mod
         
         comparison_data.append({
             "Strategy Name": strategy.name,
-            "Trades Closed": res["trades_closed"],
-            "Wins": res["wins"],
-            "Losses": res["losses"],
+            "Trades": res["trades_closed"],
             "Win Rate (%)": round(win_rate, 2),
-            "Sum Return (%)": round(res["total_return_sum"], 2),
-            "Portfolio Return (%)": round(portfolio_return, 2),
-            "Final Capital ($)": round(res["final_capital"], 2),
-            "B&H Return (%)": round(buy_hold_return, 2),
+            "Max DD (%)": round(res["max_drawdown"], 2),
+            "Sharpe": round(res["sharpe"], 2),
+            "Robustness": round(rob, 2),
+            "Return (%)": round(portfolio_return, 2),
+            "Composite Score": round(score, 2),
             "Beat B&H?": beat_bh
         })
         
     df_compare = pd.DataFrame(comparison_data)
     
-    # Sort by Portfolio Return (%) descending
-    df_compare = df_compare.sort_values(by="Portfolio Return (%)", ascending=False).reset_index(drop=True)
+    # Sort by Composite Score descending
+    df_compare = df_compare.sort_values(by="Composite Score", ascending=False).reset_index(drop=True)
     
     # Print comparison table
     pd.set_option('display.max_columns', None)
@@ -62,8 +90,9 @@ def compare_strategies(strategies, starting_capital: float = 10000.0, legacy_mod
     # Identify the winner
     if len(df_compare) > 0:
         winner = df_compare.iloc[0]
-        print(f"🏆 WINNER: {winner['Strategy Name']}")
-        print(f"   Portfolio Return: {winner['Portfolio Return (%)']:.2f}% (Final Capital: ${winner['Final Capital ($)']:,.2f})")
+        print(f"🏆 COMPOSITE WINNER: {winner['Strategy Name']}")
+        print(f"   Composite Score:  {winner['Composite Score']:.2f} / 100.0")
+        print(f"   Portfolio Return: {winner['Return (%)']:.2f}% (Max Drawdown: {winner['Max DD (%)']:.2f}%, Sharpe: {winner['Sharpe']:.2f})")
         print("=" * 80)
         
     return df_compare

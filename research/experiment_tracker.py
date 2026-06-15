@@ -3,15 +3,15 @@ from research.experiment import Experiment
 from research.database import add_experiment
 from backtesting.ranking import calculate_composite_score
 
-def track_backtest_run(backtest_res: dict, robustness_score: float = 50.0, walk_forward_score: float = 0.0) -> Experiment:
+def track_backtest_run(backtest_res: dict, robustness_score: float = 50.0, walk_forward_score: float = 0.0, symbol: str = "BTC-USD") -> Experiment:
     """
     Tracks a standard backtest run and logs it to the research database.
     """
     # Extract dates
     equity_curve = backtest_res["equity_curve"]
     if not equity_curve.empty:
-        start_date = str(equity_curve.index[0])
-        end_date = str(equity_curve.index[-1])
+        start_date = str(equity_curve.index[0].date() if hasattr(equity_curve.index[0], "date") else equity_curve.index[0])
+        end_date = str(equity_curve.index[-1].date() if hasattr(equity_curve.index[-1], "date") else equity_curve.index[-1])
     else:
         start_date = ""
         end_date = ""
@@ -29,7 +29,7 @@ def track_backtest_run(backtest_res: dict, robustness_score: float = 50.0, walk_
     # Create Experiment
     exp = Experiment(
         strategy_name=backtest_res["strategy_name"],
-        parameters=backtest_res.get("parameters", {}), # If strategy parameters are not directly returned, we can fall back to strategy params
+        parameters=backtest_res.get("parameters", {}),
         portfolio_return=backtest_res["portfolio_return"],
         sharpe=backtest_res["sharpe"],
         sortino=backtest_res["sortino"],
@@ -37,7 +37,7 @@ def track_backtest_run(backtest_res: dict, robustness_score: float = 50.0, walk_
         robustness=robustness_score,
         walk_forward_score=walk_forward_score,
         composite_score=composite_score,
-        symbol="BTC-USD",
+        symbol=symbol,
         start_date=start_date,
         end_date=end_date
     )
@@ -45,6 +45,7 @@ def track_backtest_run(backtest_res: dict, robustness_score: float = 50.0, walk_
     # Save to DB
     add_experiment(exp)
     return exp
+
 
 def track_optimization_run(strategy_name: str, best_params: dict, best_res_row: pd.Series, param_grid: dict, symbol: str = "BTC-USD", start_date: str = "", end_date: str = ""):
     """

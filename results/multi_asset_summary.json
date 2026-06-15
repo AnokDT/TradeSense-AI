@@ -1,0 +1,121 @@
+{
+  "total_assets_tested": 4,
+  "assets": [
+    "BTC-USD",
+    "ETH-USD",
+    "SOL-USD",
+    "BNB-USD"
+  ],
+  "most_robust_strategy": {
+    "strategy": "EMA Crossover",
+    "value_pct": 91.40905202761186
+  },
+  "highest_return_strategy": {
+    "strategy": "EMA Price Crossover",
+    "value_pct": 568.3881929134759
+  },
+  "lowest_drawdown_strategy": {
+    "strategy": "Supertrend",
+    "value_pct": 52.02377309230856
+  },
+  "best_risk_adjusted_strategy": {
+    "strategy": "EMA Price Crossover",
+    "value": 0.7305598617943807
+  },
+  "consistently_performing_strategies": [
+    "ATR Breakout",
+    "EMA Crossover",
+    "EMA Price Crossover",
+    "MACD Strategy",
+    "SMA Crossover",
+    "Supertrend"
+  ],
+  "overfitted_strategies_identified": [
+    "ATR Breakout",
+    "SMA Crossover",
+    "Supertrend"
+  ],
+  "rankings": [
+    {
+      "strategy_family": "EMA Crossover",
+      "return": 248.50369446076206,
+      "drawdown": 54.87241949216906,
+      "sharpe": 0.6664295758627266,
+      "robustness": 91.40905202761186,
+      "walk_forward_score": 58.33333333333333,
+      "composite_score": 61.78666535031887
+    },
+    {
+      "strategy_family": "MACD Strategy",
+      "return": 258.55857518526386,
+      "drawdown": 58.28735530655914,
+      "sharpe": 0.6560435703839393,
+      "robustness": 83.45766846885384,
+      "walk_forward_score": 75.0,
+      "composite_score": 61.702198295256245
+    },
+    {
+      "strategy_family": "EMA Price Crossover",
+      "return": 568.3881929134759,
+      "drawdown": 59.658092275305115,
+      "sharpe": 0.7305598617943807,
+      "robustness": 90.95553509324414,
+      "walk_forward_score": 75.0,
+      "composite_score": 61.406309399405586
+    },
+    {
+      "strategy_family": "ATR Breakout",
+      "return": 220.06978890821537,
+      "drawdown": 53.422014760469686,
+      "sharpe": 0.6041038396267466,
+      "robustness": 84.0759566088544,
+      "walk_forward_score": 49.99999999999999,
+      "composite_score": 60.9857103475612
+    },
+    {
+      "strategy_family": "Supertrend",
+      "return": 354.74659138932043,
+      "drawdown": 52.02377309230856,
+      "sharpe": 0.6121280636484365,
+      "robustness": 74.79794861662323,
+      "walk_forward_score": 49.99999999999999,
+      "composite_score": 58.07419117154035
+    },
+    {
+      "strategy_family": "SMA Crossover",
+      "return": 137.59233993532803,
+      "drawdown": 57.86244225675789,
+      "sharpe": 0.526037506653831,
+      "robustness": 80.61123478432509,
+      "walk_forward_score": 49.99999999999999,
+      "composite_score": 53.5640066134826
+    },
+    {
+      "strategy_family": "Donchian Breakout",
+      "return": 159.35294696342575,
+      "drawdown": 61.190170453953286,
+      "sharpe": 0.5300517217034517,
+      "robustness": 65.36977462490734,
+      "walk_forward_score": 58.33333333333333,
+      "composite_score": 49.74910944223706
+    },
+    {
+      "strategy_family": "Bollinger Bands",
+      "return": -15.332285481469142,
+      "drawdown": 72.77494799943182,
+      "sharpe": 0.15089929759397347,
+      "robustness": 19.20724665668097,
+      "walk_forward_score": 49.99999999999999,
+      "composite_score": 18.665676410131287
+    },
+    {
+      "strategy_family": "RSI Strategy",
+      "return": -5.877045398476488,
+      "drawdown": 63.24724258012583,
+      "sharpe": 0.2236406615189093,
+      "robustness": 6.824565763426339,
+      "walk_forward_score": 49.99999999999999,
+      "composite_score": 15.06271208698087
+    }
+  ]
+}

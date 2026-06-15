@@ -24,7 +24,7 @@ from backtesting.robustness import analyze_robustness
 from backtesting.walk_forward import run_walk_forward_validation
 
 # Phase 4 Imports
-from research.benchmark import run_benchmark_suite, export_research_report
+from research.benchmark import run_benchmark_suite, export_research_report, export_multi_asset_report
 from research.query import get_all_experiments, get_top_n_strategies, get_best_strategy_by_metric
 
 def run_daily_analysis():
@@ -389,7 +389,11 @@ if __name__ == "__main__":
             analyze_robustness(EMAPriceCrossoverStrategy, {"ema_period": 50}, "ema_period", step=1, count=5, legacy_mode=False)
         elif arg == "benchmark":
             run_benchmark_suite(legacy_mode=False)
+        elif arg == "benchmark_multi":
+            run_benchmark_suite(symbols=["BTC-USD", "ETH-USD", "SOL-USD", "BNB-USD"], legacy_mode=False)
+            export_multi_asset_report(symbols=["BTC-USD", "ETH-USD", "SOL-USD", "BNB-USD"])
         else:
             print(f"Unknown argument: {arg}")
     else:
         main_menu()
+

@@ -14,7 +14,7 @@
     "symbol": "BTC-USD",
     "start_date": "2021-06-15",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:07:34.099063"
+    "timestamp": "2026-06-15T11:13:38.490440"
   },
   {
     "strategy_name": "EMA Crossover (EMA 50 vs EMA 200)",
@@ -32,7 +32,7 @@
     "symbol": "BTC-USD",
     "start_date": "2021-06-15",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:07:46.917255"
+    "timestamp": "2026-06-15T11:13:49.211769"
   },
   {
     "strategy_name": "SMA Crossover (SMA 20 vs SMA 50)",
@@ -50,7 +50,7 @@
     "symbol": "BTC-USD",
     "start_date": "2021-08-03",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:07:59.428765"
+    "timestamp": "2026-06-15T11:13:58.680743"
   },
   {
     "strategy_name": "MACD Strategy (MACD 12/26/9)",
@@ -59,17 +59,17 @@
       "slow_period": 26,
       "signal_period": 9
     },
-    "return": 118.22147415481894,
-    "sharpe": 0.6249958954836786,
-    "sortino": 0.9640578223245363,
+    "return": 118.42336304381955,
+    "sharpe": 0.6255257062422802,
+    "sortino": 0.9649040277975798,
     "drawdown": 44.37960985801248,
-    "robustness": 84.85386521466354,
+    "robustness": 84.89352566883076,
     "walk_forward_score": 100.0,
-    "composite_score": 70.04250988165411,
+    "composite_score": 70.05397404421157,
     "symbol": "BTC-USD",
     "start_date": "2021-06-15",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:08:06.948414"
+    "timestamp": "2026-06-15T11:14:06.721101"
   },
   {
     "strategy_name": "Supertrend (ATR 10, Mult 3.0)",
@@ -87,7 +87,7 @@
     "symbol": "BTC-USD",
     "start_date": "2021-06-15",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:08:18.220200"
+    "timestamp": "2026-06-15T11:14:18.393503"
   },
   {
     "strategy_name": "Donchian Breakout (Lookback 20)",
@@ -104,7 +104,7 @@
     "symbol": "BTC-USD",
     "start_date": "2021-07-05",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:08:24.687098"
+    "timestamp": "2026-06-15T11:14:25.081786"
   },
   {
     "strategy_name": "RSI Strategy (RSI 14, OS 30, OB 70)",
@@ -113,17 +113,17 @@
       "oversold": 30,
       "overbought": 70
     },
-    "return": 24.018094015007883,
-    "sharpe": 0.30833655511695474,
-    "sortino": 0.44857087285774494,
+    "return": 24.132830089052096,
+    "sharpe": 0.30880377507926016,
+    "sortino": 0.44926072852969123,
     "drawdown": 61.644485260617266,
-    "robustness": 20.39174528217405,
+    "robustness": 20.451232546415955,
     "walk_forward_score": 66.66666666666666,
-    "composite_score": 24.129137680646284,
+    "composite_score": 24.184307559158842,
     "symbol": "BTC-USD",
     "start_date": "2021-06-28",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:08:29.650452"
+    "timestamp": "2026-06-15T11:14:29.166751"
   },
   {
     "strategy_name": "Bollinger Bands (Period 20, Std 2.0)",
@@ -131,17 +131,17 @@
       "period": 20,
       "std_dev": 2.0
     },
-    "return": 55.724167384817136,
-    "sharpe": 0.42764351939817374,
-    "sortino": 0.6205224925613475,
+    "return": 55.86823652038518,
+    "sharpe": 0.42814898916745553,
+    "sortino": 0.6212724651933039,
     "drawdown": 58.10811902846579,
-    "robustness": 46.97145484927497,
+    "robustness": 46.99919480104805,
     "walk_forward_score": 33.33333333333333,
-    "composite_score": 42.22167659341237,
+    "composite_score": 42.28101857967768,
     "symbol": "BTC-USD",
     "start_date": "2021-07-04",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:08:52.625760"
+    "timestamp": "2026-06-15T11:14:38.022462"
   },
   {
     "strategy_name": "ATR Breakout (ATR 14, Mult 1.5)",
@@ -159,6 +159,492 @@
     "symbol": "BTC-USD",
     "start_date": "2021-06-28",
     "end_date": "2026-06-15",
-    "timestamp": "2026-06-15T10:09:12.203414"
+    "timestamp": "2026-06-15T11:14:48.097983"
+  },
+  {
+    "strategy_name": "EMA Price Crossover (EMA 50)",
+    "parameters": {
+      "ema_period": 50
+    },
+    "return": 29.816305808555025,
+    "sharpe": 0.34048622879776963,
+    "sortino": 0.4960380844494187,
+    "drawdown": 63.519555394900664,
+    "robustness": 87.17480932140211,
+    "walk_forward_score": 100.0,
+    "composite_score": 39.26068824053465,
+    "symbol": "ETH-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:14:58.668902"
+  },
+  {
+    "strategy_name": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "return": 17.486811185759088,
+    "sharpe": 0.29603751198795747,
+    "sortino": 0.4423694642486109,
+    "drawdown": 50.45451322013535,
+    "robustness": 77.91764856225281,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 36.06386873568546,
+    "symbol": "ETH-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:08.445623"
+  },
+  {
+    "strategy_name": "SMA Crossover (SMA 20 vs SMA 50)",
+    "parameters": {
+      "fast_period": 20,
+      "slow_period": 50
+    },
+    "return": 48.7663356493751,
+    "sharpe": 0.40693311252474407,
+    "sortino": 0.6088331799666988,
+    "drawdown": 49.607998805555795,
+    "robustness": 75.16366317883679,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 47.41183782849132,
+    "symbol": "ETH-USD",
+    "start_date": "2021-08-03",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:18.084085"
+  },
+  {
+    "strategy_name": "MACD Strategy (MACD 12/26/9)",
+    "parameters": {
+      "fast_period": 12,
+      "slow_period": 26,
+      "signal_period": 9
+    },
+    "return": 45.24433857789336,
+    "sharpe": 0.3928253764135592,
+    "sortino": 0.6004882001217164,
+    "drawdown": 57.710458215337304,
+    "robustness": 82.91146927888285,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 45.609033646961976,
+    "symbol": "ETH-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:23.386666"
+  },
+  {
+    "strategy_name": "Supertrend (ATR 10, Mult 3.0)",
+    "parameters": {
+      "atr_period": 10,
+      "multiplier": 3.0
+    },
+    "return": 67.05768751881573,
+    "sharpe": 0.4512908194926156,
+    "sortino": 0.684039816258014,
+    "drawdown": 50.6715124939313,
+    "robustness": 70.0818620654364,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 52.82729038447406,
+    "symbol": "ETH-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:35.769185"
+  },
+  {
+    "strategy_name": "Donchian Breakout (Lookback 20)",
+    "parameters": {
+      "lookback_period": 20
+    },
+    "return": 19.75778459833933,
+    "sharpe": 0.3100144551595077,
+    "sortino": 0.4541411104458386,
+    "drawdown": 60.6607282697913,
+    "robustness": 26.396826214513023,
+    "walk_forward_score": 100.0,
+    "composite_score": 24.096170819270263,
+    "symbol": "ETH-USD",
+    "start_date": "2021-07-05",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:43.299067"
+  },
+  {
+    "strategy_name": "RSI Strategy (RSI 14, OS 30, OB 70)",
+    "parameters": {
+      "rsi_period": 14,
+      "oversold": 30,
+      "overbought": 70
+    },
+    "return": -1.9551078702477207,
+    "sharpe": 0.24549851313881665,
+    "sortino": 0.3590901729960666,
+    "drawdown": 70.58430424105725,
+    "robustness": 6.8470305072894,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 10.359986795452345,
+    "symbol": "ETH-USD",
+    "start_date": "2021-06-28",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:47.285359"
+  },
+  {
+    "strategy_name": "Bollinger Bands (Period 20, Std 2.0)",
+    "parameters": {
+      "period": 20,
+      "std_dev": 2.0
+    },
+    "return": -67.35838394891802,
+    "sharpe": -0.14535203534782576,
+    "sortino": -0.20851972254206796,
+    "drawdown": 81.64940275805705,
+    "robustness": 0.0,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 4.587649310485737,
+    "symbol": "ETH-USD",
+    "start_date": "2021-07-04",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:15:59.000155"
+  },
+  {
+    "strategy_name": "ATR Breakout (ATR 14, Mult 1.5)",
+    "parameters": {
+      "atr_period": 14,
+      "multiplier": 1.5
+    },
+    "return": 63.71081891615861,
+    "sharpe": 0.443401276642967,
+    "sortino": 0.6755392374083862,
+    "drawdown": 47.64351434632893,
+    "robustness": 84.07200474224258,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 55.15831749347491,
+    "symbol": "ETH-USD",
+    "start_date": "2021-06-28",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:16:09.616479"
+  },
+  {
+    "strategy_name": "EMA Price Crossover (EMA 50)",
+    "parameters": {
+      "ema_period": 50
+    },
+    "return": 1934.2629234464137,
+    "sharpe": 1.2247723517768478,
+    "sortino": 2.1373624945378165,
+    "drawdown": 66.14542035558854,
+    "robustness": 92.47957140838969,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 70.12470820462646,
+    "symbol": "SOL-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:16:21.507209"
+  },
+  {
+    "strategy_name": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "return": 545.526334356674,
+    "sharpe": 0.8864006116144008,
+    "sortino": 1.4435395124011032,
+    "drawdown": 70.80422592070953,
+    "robustness": 97.9144407036542,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 67.79116907131613,
+    "symbol": "SOL-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:16:33.342249"
+  },
+  {
+    "strategy_name": "SMA Crossover (SMA 20 vs SMA 50)",
+    "parameters": {
+      "fast_period": 20,
+      "slow_period": 50
+    },
+    "return": 336.7509988899972,
+    "sharpe": 0.7821907536856091,
+    "sortino": 1.293390671776894,
+    "drawdown": 76.12068420061544,
+    "robustness": 82.70648572092499,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 62.72573111860187,
+    "symbol": "SOL-USD",
+    "start_date": "2021-08-03",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:16:43.989273"
+  },
+  {
+    "strategy_name": "MACD Strategy (MACD 12/26/9)",
+    "parameters": {
+      "fast_period": 12,
+      "slow_period": 26,
+      "signal_period": 9
+    },
+    "return": 711.0791356004586,
+    "sharpe": 0.9367898351016347,
+    "sortino": 1.5366152946494112,
+    "drawdown": 84.01152742742755,
+    "robustness": 76.59064106422268,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 60.56051192333188,
+    "symbol": "SOL-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:16:50.201642"
+  },
+  {
+    "strategy_name": "Supertrend (ATR 10, Mult 3.0)",
+    "parameters": {
+      "atr_period": 10,
+      "multiplier": 3.0
+    },
+    "return": 1209.9613259728635,
+    "sharpe": 1.0603457454212184,
+    "sortino": 1.74566615161409,
+    "drawdown": 63.85075131388067,
+    "robustness": 86.57196735458066,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 68.42067727858742,
+    "symbol": "SOL-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:01.984395"
+  },
+  {
+    "strategy_name": "Donchian Breakout (Lookback 20)",
+    "parameters": {
+      "lookback_period": 20
+    },
+    "return": 469.5372851559403,
+    "sharpe": 0.8487978121334024,
+    "sortino": 1.4304642788561373,
+    "drawdown": 79.9941027510101,
+    "robustness": 80.15215109938264,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 61.69055661301335,
+    "symbol": "SOL-USD",
+    "start_date": "2021-07-05",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:10.651885"
+  },
+  {
+    "strategy_name": "RSI Strategy (RSI 14, OS 30, OB 70)",
+    "parameters": {
+      "rsi_period": 14,
+      "oversold": 30,
+      "overbought": 70
+    },
+    "return": -56.05218041928867,
+    "sharpe": 0.09504679019101539,
+    "sortino": 0.13807170426882182,
+    "drawdown": 79.61024444077684,
+    "robustness": 0.0,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 5.731084157745893,
+    "symbol": "SOL-USD",
+    "start_date": "2021-06-28",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:15.174282"
+  },
+  {
+    "strategy_name": "Bollinger Bands (Period 20, Std 2.0)",
+    "parameters": {
+      "period": 20,
+      "std_dev": 2.0
+    },
+    "return": -71.33893362397016,
+    "sharpe": 0.015153275661161886,
+    "sortino": 0.021506826102440164,
+    "drawdown": 89.59951876836357,
+    "robustness": 0.0,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 2.701142145650188,
+    "symbol": "SOL-USD",
+    "start_date": "2021-07-04",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:24.518134"
+  },
+  {
+    "strategy_name": "ATR Breakout (ATR 14, Mult 1.5)",
+    "parameters": {
+      "atr_period": 14,
+      "multiplier": 1.5
+    },
+    "return": 624.5938654510838,
+    "sharpe": 0.915895255473115,
+    "sortino": 1.5458410459652856,
+    "drawdown": 65.60381469442538,
+    "robustness": 76.76149409127781,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 65.05731351446998,
+    "symbol": "SOL-USD",
+    "start_date": "2021-06-28",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:34.337351"
+  },
+  {
+    "strategy_name": "EMA Price Crossover (EMA 50)",
+    "parameters": {
+      "ema_period": 50
+    },
+    "return": 93.14742414520298,
+    "sharpe": 0.5231519203810595,
+    "sortino": 0.7764187719930723,
+    "drawdown": 57.029593694113224,
+    "robustness": 89.71831160364854,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 64.77554181722951,
+    "symbol": "BNB-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:41.152762"
+  },
+  {
+    "strategy_name": "EMA Crossover (EMA 50 vs EMA 200)",
+    "parameters": {
+      "fast_period": 50,
+      "slow_period": 200
+    },
+    "return": 120.58721980205003,
+    "sharpe": 0.5739771363809959,
+    "sortino": 0.8596764391655134,
+    "drawdown": 53.88156041132166,
+    "robustness": 93.70657773330464,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 69.09743968637048,
+    "symbol": "BNB-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:17:53.030982"
+  },
+  {
+    "strategy_name": "SMA Crossover (SMA 20 vs SMA 50)",
+    "parameters": {
+      "fast_period": 20,
+      "slow_period": 50
+    },
+    "return": 146.18460645381197,
+    "sharpe": 0.6362344862897534,
+    "sortino": 0.96305733298825,
+    "drawdown": 47.845908385491484,
+    "robustness": 85.67828355987058,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 69.41574285753293,
+    "symbol": "BNB-USD",
+    "start_date": "2021-08-03",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:05.527759"
+  },
+  {
+    "strategy_name": "MACD Strategy (MACD 12/26/9)",
+    "parameters": {
+      "fast_period": 12,
+      "slow_period": 26,
+      "signal_period": 9
+    },
+    "return": 159.48746351888403,
+    "sharpe": 0.6690333637782833,
+    "sortino": 1.0188121152659502,
+    "drawdown": 47.047825725459234,
+    "robustness": 89.43503786347907,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 70.58527356651956,
+    "symbol": "BNB-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:11.741663"
+  },
+  {
+    "strategy_name": "Supertrend (ATR 10, Mult 3.0)",
+    "parameters": {
+      "atr_period": 10,
+      "multiplier": 3.0
+    },
+    "return": 47.825388372470165,
+    "sharpe": 0.39795458789173266,
+    "sortino": 0.5751446272183413,
+    "drawdown": 46.68356242429201,
+    "robustness": 63.20777989478583,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 45.3625818891936,
+    "symbol": "BNB-USD",
+    "start_date": "2021-06-15",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:22.158255"
+  },
+  {
+    "strategy_name": "Donchian Breakout (Lookback 20)",
+    "parameters": {
+      "lookback_period": 20
+    },
+    "return": 57.55239740926943,
+    "sharpe": 0.4287026256959927,
+    "sortino": 0.6346656519289609,
+    "drawdown": 58.16040385550152,
+    "robustness": 69.83406822736283,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 47.42806927948144,
+    "symbol": "BNB-USD",
+    "start_date": "2021-07-05",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:28.924446"
+  },
+  {
+    "strategy_name": "RSI Strategy (RSI 14, OS 30, OB 70)",
+    "parameters": {
+      "rsi_period": 14,
+      "oversold": 30,
+      "overbought": 70
+    },
+    "return": 10.366276606578339,
+    "sharpe": 0.245213567666545,
+    "sortino": 0.3432682273019613,
+    "drawdown": 41.14993637805196,
+    "robustness": 0.0,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 19.975469835566397,
+    "symbol": "BNB-USD",
+    "start_date": "2021-06-28",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:32.879377"
+  },
+  {
+    "strategy_name": "Bollinger Bands (Period 20, Std 2.0)",
+    "parameters": {
+      "period": 20,
+      "std_dev": 2.0
+    },
+    "return": 21.499939126626433,
+    "sharpe": 0.3056469608951023,
+    "sortino": 0.4253549371733104,
+    "drawdown": 61.74275144284089,
+    "robustness": 29.829791825675827,
+    "walk_forward_score": 66.66666666666666,
+    "composite_score": 25.09289560471154,
+    "symbol": "BNB-USD",
+    "start_date": "2021-07-04",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:42.611604"
+  },
+  {
+    "strategy_name": "ATR Breakout (ATR 14, Mult 1.5)",
+    "parameters": {
+      "atr_period": 14,
+      "multiplier": 1.5
+    },
+    "return": 129.98627549534604,
+    "sharpe": 0.6070025170262159,
+    "sortino": 0.9126490064724329,
+    "drawdown": 48.85180202191821,
+    "robustness": 93.83929688220226,
+    "walk_forward_score": 33.33333333333333,
+    "composite_score": 70.60159231780234,
+    "symbol": "BNB-USD",
+    "start_date": "2021-06-28",
+    "end_date": "2026-06-15",
+    "timestamp": "2026-06-15T11:18:54.380238"
   }
 ]
